@@ -219,7 +219,7 @@ section {
     padding-left: 2rem;
 }
 
-.contacto {
+.redes_section {
     height: auto;
     border-bottom-right-radius: 2rem;
     border-bottom-left-radius: 2rem;
@@ -252,7 +252,7 @@ section {
     gap: 2rem;
     margin: 0 auto;
     max-width: 80rem;
-  }
+}
 
 .redes {
   width: 100%;            
