@@ -93,7 +93,7 @@ header .x:last-of-type {
 nav {
     background-color: var(--blanco);
     width: 95%;
-    height: 5rem;
+    height: 6rem;
     margin: 0 auto;
     border-radius: 0.5rem;
     display: flex;
@@ -103,7 +103,7 @@ nav {
 }
 
 nav a {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     color: var(--negro_claro);
     text-decoration: none;
     transition: color 0.2s ease-in-out;
