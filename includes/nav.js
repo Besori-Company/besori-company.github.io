@@ -72,7 +72,7 @@ document.getElementById("nav-placeholder").innerHTML = `
                         <input type="checkbox" id="recordar">
                         <span>Recordarme</span>
                     </label>
-                    <a href="#" class="link_recuperar">¿Olvidaste tu contraseña?</a>
+                    <!-- <a href="#" class="link_recuperar">¿Olvidaste tu contraseña?</a> -->
                 </div>
 
                 <button type="submit" class="btn_submit">Iniciar Sesión</button>
@@ -164,7 +164,7 @@ document.getElementById("nav-placeholder").innerHTML = `
                 <div class="form_grupo">
                     <label class="checkbox_label">
                         <input type="checkbox" id="terminos" required>
-                        <span style="font-size: 1.5rem;">Acepto los <a href="#">términos y condiciones</a></span>
+                        <span style="font-size: 1.5rem;">Acepto los <a href="/pages/terms.html">términos y condiciones</a></span>
                     </label>
                 </div>
 
