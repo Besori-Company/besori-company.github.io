@@ -104,7 +104,7 @@ document.getElementById("nav-placeholder").innerHTML = `
                         type="text" 
                         id="registro-nombre" 
                         class="form_input" 
-                        placeholder="Tu nombre"
+                        placeholder="Tú nombre"
                         required
                     >
                 </div>
