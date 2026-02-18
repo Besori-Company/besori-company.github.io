@@ -164,7 +164,7 @@ document.getElementById("nav-placeholder").innerHTML = `
                 <div class="form_grupo">
                     <label class="checkbox_label">
                         <input type="checkbox" id="terminos" required>
-                        <span style="font-size: 1.5rem;">Acepto los <a href="/pages/terms.html">términos y condiciones</a></span>
+                        <span style="font-size: 1.5rem;">Acepto los <a href="/pages/terms.html" style="color: #3577b1; text-decoration: none;">términos y condiciones</a></span>
                     </label>
                 </div>
 
