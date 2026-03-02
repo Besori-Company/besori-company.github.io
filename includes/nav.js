@@ -617,30 +617,6 @@ async function manejarGoogle() {
 document.getElementById('btn-google-login').addEventListener('click', manejarGoogle);
 document.getElementById('btn-google-registro').addEventListener('click', manejarGoogle);
 
-// ==================== REDIRECT GOOGLE (producción) ====================
-
-(async function() {
-    const esLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-    if (esLocal) return;
-    try {
-        const { manejarRedirectGoogle } = await import('/includes/firebase.js');
-        const resultado = await manejarRedirectGoogle();
-        if (!resultado) return;
-        if (resultado.success) {
-            if (resultado.requiresMfaSetup) {
-                window._mfaEnProceso = true;
-                await iniciarSetupMfa();
-            } else if (resultado.requiresMfaVerify) {
-                window._mfaEnProceso = true;
-                mostrarVerificacionMfaLogin(resultado.totpSecret, resultado.user);
-            } else {
-                mostrarNotificacion('¡Conectado con Google!', 'exito');
-                actualizarMenuUsuario(resultado.user);
-            }
-        }
-    } catch (err) { /* sin redirect pendiente */ }
-})();
-
 // ==================== OBSERVADOR AUTH ====================
 
 (async function() {
