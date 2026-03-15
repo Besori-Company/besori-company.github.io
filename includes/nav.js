@@ -331,7 +331,10 @@ document.querySelector('.btn_usuario').addEventListener('click', async (e) => {
 
 // ==================== SETUP MFA ====================
 
+let _setupMfaEnCurso = false;
 async function iniciarSetupMfa() {
+    if (_setupMfaEnCurso) return;
+    _setupMfaEnCurso = true;
     cerrarTodos();
     document.getElementById('qr-loading').style.display = 'flex';
     document.getElementById('qr-code-div').style.display = 'none';
@@ -377,6 +380,8 @@ async function iniciarSetupMfa() {
         });
     } catch (err) {
         document.getElementById('qr-loading').innerHTML = '<span style="color:#ef4444">Error al generar QR. Usa el código manual.</span>';
+    } finally {
+        _setupMfaEnCurso = false;
     }
 }
 
