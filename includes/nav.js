@@ -176,6 +176,7 @@ document.getElementById("nav-placeholder").innerHTML = `
             </div>
             <div id="mfa-setup-error" class="mfa_error" style="display:none;"></div>
             <button type="button" class="btn_submit" id="btn-activar-mfa">Activar verificación en dos pasos</button>
+            <button type="button" class="btn_link" id="btn-mfa-despues">Configurar más tarde</button>
             <p class="mfa_nota">Tu cuenta quedará protegida con esta configuración</p>
         </div>
     </div>
@@ -315,7 +316,18 @@ soloNumeros('mfa-login-codigo');
 // Cerrar modales
 document.getElementById('cerrar-modal-auth').addEventListener('click', () => cerrarModal('modal-auth'));
 document.getElementById('modal-auth').addEventListener('click', e => { if (e.target.id === 'modal-auth') cerrarModal('modal-auth'); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarTodos(); });
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (document.getElementById('modal-mfa-setup').classList.contains('modal_activo')) {
+            document.getElementById('btn-mfa-despues').click();
+        } else {
+            cerrarTodos();
+        }
+    }
+});
+document.getElementById('modal-mfa-setup').addEventListener('click', e => {
+    if (e.target.id === 'modal-mfa-setup') document.getElementById('btn-mfa-despues').click();
+});
 
 // Botón cuenta
 document.querySelector('.btn_usuario').addEventListener('click', async (e) => {
@@ -448,6 +460,17 @@ document.getElementById('btn-activar-mfa').addEventListener('click', async () =>
     }
 });
 
+// Configurar más tarde
+document.getElementById('btn-mfa-despues').addEventListener('click', async () => {
+    const { cerrarSesion } = await import('/includes/firebase.js');
+    await cerrarSesion();
+    _totpSecretSetup = null;
+    window._mfaEnProceso = false;
+    _setupMfaEnCurso = false;
+    cerrarModal('modal-mfa-setup');
+    mostrarNotificacion('Podrás configurar la verificación en dos pasos la próxima vez que inicies sesión', 'info');
+});
+
 // ==================== VERIFICAR MFA AL LOGIN ====================
 
 function mostrarVerificacionMfaLogin(totpSecret, user) {
@@ -569,6 +592,7 @@ document.getElementById('form-registro').addEventListener('submit', async (e) =>
 
         if (resultado.success) {
             e.target.reset();
+            window._mfaEnProceso = true;
             mostrarNotificacion('¡Cuenta creada! Ahora configura la verificación en dos pasos', 'exito');
             await iniciarSetupMfa();
         } else {
@@ -637,7 +661,6 @@ document.getElementById('btn-google-registro').addEventListener('click', manejar
             if (!data || !data.mfaConfigurado) {
                 window._mfaEnProceso = true;
                 if (btnTexto) btnTexto.textContent = 'Cuenta';
-                mostrarNotificacion('Debes configurar la verificación en dos pasos para continuar', 'info');
                 await iniciarSetupMfa();
                 return;
             }
