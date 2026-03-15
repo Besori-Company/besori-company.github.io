@@ -428,7 +428,7 @@ document.getElementById('btn-activar-mfa').addEventListener('click', async () =>
     btn.textContent = 'Verificando...';
 
     try {
-        const { verificarCodigoTotp, guardarMfaActivado, obtenerUsuarioActual } = await import('/includes/firebase.js');
+        const { verificarCodigoTotp, guardarMfaActivado, obtenerUsuarioActual, obtenerDatosUsuario } = await import('/includes/firebase.js');
         const user = obtenerUsuarioActual();
         const esValido = await verificarCodigoTotp(_totpSecretSetup, codigo);
 
@@ -446,7 +446,8 @@ document.getElementById('btn-activar-mfa').addEventListener('click', async () =>
             window._mfaEnProceso = false;
             cerrarModal('modal-mfa-setup');
             mostrarNotificacion('¡Verificación en dos pasos activada! Tu cuenta está protegida.', 'exito');
-            actualizarMenuUsuario(user);
+            const { data } = await obtenerDatosUsuario(user.uid);
+            actualizarMenuUsuario(user, data?.nombre);
         } else {
             errorDiv.textContent = resultado.error;
             errorDiv.style.display = 'block';
@@ -664,8 +665,9 @@ document.getElementById('btn-google-registro').addEventListener('click', manejar
                 await iniciarSetupMfa();
                 return;
             }
-            if (btnTexto) btnTexto.textContent = user.displayName || user.email.split('@')[0];
-            actualizarMenuUsuario(user);
+            const nombre = data.nombre || user.displayName || user.email.split('@')[0];
+            if (btnTexto) btnTexto.textContent = nombre;
+            actualizarMenuUsuario(user, nombre);
         } else {
             if (btnTexto) btnTexto.textContent = 'Cuenta';
             const m = document.getElementById('menu-usuario');
@@ -676,8 +678,11 @@ document.getElementById('btn-google-registro').addEventListener('click', manejar
 
 // ==================== MENÚ USUARIO ====================
 
-function actualizarMenuUsuario(user) {
+function actualizarMenuUsuario(user, nombre) {
     if (!user) return;
+    const displayName = nombre || user.displayName || 'Usuario';
+    const btnTexto = document.querySelector('.btn_usuario .btn_texto');
+    if (btnTexto) btnTexto.textContent = displayName;
     const btnUsuario = document.querySelector('.btn_usuario');
     let menu = document.getElementById('menu-usuario');
     if (!menu) {
@@ -686,7 +691,7 @@ function actualizarMenuUsuario(user) {
         menu.className = 'menu_usuario';
         menu.innerHTML = `
             <div class="menu_usuario_info">
-                <strong>${user.displayName || 'Usuario'}</strong>
+                <strong>${displayName}</strong>
                 <small>${user.email}</small>
             </div>
             <hr>
