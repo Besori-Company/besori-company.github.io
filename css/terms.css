@@ -1,13 +1,22 @@
 /* ==================== ÍNDICE ==================== */
 .terms-index {
-    padding: 3rem 4.5rem;
+    padding: 3rem 4.5rem 2.5rem 4.5rem;
 }
 
 .terms-nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin: 1rem 0 2rem 0;
+}
+
+@media (min-width: 600px) {
+    .terms-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }
 
 .terms-nav__link {
@@ -34,6 +43,11 @@
     color: var(--negro_claro);
     opacity: 0.6;
     margin: 0;
+    padding-top: 0.5rem;
+}
+
+.terms-index .titulo {
+    margin-bottom: 1.5rem;
 }
 
 /* ==================== SECCIONES ==================== */
@@ -56,7 +70,7 @@
 
 .terms ol,
 .terms_section ol {
-    max-width: 70ch;
+    max-width: 100%;
 }
 
 .text {
@@ -133,16 +147,6 @@ ol li::marker {
 
     .terms-index {
         padding: 2rem;
-    }
-
-    .terms-nav {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
-
-    .terms-nav__link {
-        font-size: 1.4rem;
-        width: fit-content;
     }
 
     .text {
