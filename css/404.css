@@ -1,0 +1,97 @@
+.error-section {
+    text-align: center;
+    padding: 6rem 2rem 8rem;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem 0.5rem 1.5rem 1.5rem;
+}
+
+.error-code {
+    font-family: "Nunito", sans-serif;
+    font-size: 12rem;
+    font-weight: 700;
+    color: var(--azul);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    animation: floatCode 3s ease-in-out infinite;
+    letter-spacing: -0.03em;
+}
+
+@keyframes floatCode {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.error-subtitle {
+    font-family: "Nunito", sans-serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--negro);
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 1.8rem;
+    color: var(--negro_claro);
+    max-width: 450px;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+}
+
+.error-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 3rem;
+    background: var(--negro);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: all var(--transicion);
+}
+
+.error-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra_elevada);
+}
+
+.error-link svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.error-link:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 750px) {
+    .error-code {
+        font-size: 10rem;
+    }
+
+    .error-subtitle {
+        font-size: 2.2rem;
+    }
+
+    .error-message {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .error-code {
+        font-size: 8rem;
+    }
+
+    .error-subtitle {
+        font-size: 1.8rem;
+    }
+}
