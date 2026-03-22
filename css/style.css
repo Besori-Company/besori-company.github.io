@@ -887,12 +887,6 @@ section {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.canal-card--playstore .canal-card__icono {
-    background: transparent;
-    width: auto;
-    height: auto;
-    border-radius: 0;
-}
 
 .feedback_section {
     padding-top: 4rem;
