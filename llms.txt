@@ -1,0 +1,28 @@
+# Besori
+
+> Besori (también conocido como Besori Company, besoricompany o Besori-Company) es un estudio indie de desarrollo de aplicaciones y videojuegos fundado en 2025 en Valencia, España. Creado y liderado por un único desarrollador apasionado por la tecnología, Besori apuesta por interfaces minimalistas, herramientas útiles y accesibles, y el software de código abierto.
+
+## Filosofía
+
+- Interfaces sencillas y minimalistas: la barrera de entrada es baja, cualquiera puede instalar y usar los productos.
+- Profundidad técnica opcional: algunos productos son opensource y permiten personalización avanzada.
+- Favor al código abierto: parte del software está o estará disponible públicamente.
+
+## Productos
+
+- **Besori Cloud**: gestor de archivos con interfaz web. Permite almacenar y organizar archivos en tus propios equipos o servidores. Actualmente en desarrollo.
+- **Kael**: orquestador y agente de modelos de inteligencia artificial, tanto locales como online, con control de ventanas y sistema. Actualmente en desarrollo.
+
+## Canales oficiales
+
+- Web: https://besoricompany.com
+- GitHub: https://github.com/Besori-Company/
+- Instagram: https://www.instagram.com/b.e.s.o.r.i/
+- X (Twitter): https://x.com/besoricompany
+- Contacto: info.besori@gmail.com
+
+## Páginas del sitio
+
+- [Inicio](https://besoricompany.com/): productos, canales y feedback.
+- [Nosotros](https://besoricompany.com/pages/nosotros.html): historia, misión y equipo.
+- [Términos](https://besoricompany.com/pages/terms.html): términos y condiciones de uso.
