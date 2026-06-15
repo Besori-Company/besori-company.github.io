@@ -51,6 +51,7 @@
     color: transparent;
     /* Evita que el último carácter quede recortado */
     padding-right: 0.06em;
+    will-change: filter, background-position;
 
     animation: liquidLight 6s ease-in-out infinite;
 }
@@ -131,7 +132,21 @@
 @media (max-width: 750px) {
     .error-code {
         font-size: 15rem;
+        /* En móvil solo anima el gradiente, sin filter — más ligero */
+        animation: liquidLightMobile 6s ease-in-out infinite;
+        filter:
+            drop-shadow(0  2px  0  rgba(255, 255, 255, 1.00))
+            drop-shadow(0 -2px  0  rgba( 30,  85, 185, 0.65));
     }
+}
+
+@keyframes liquidLightMobile {
+    0%   { background-position:   0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position:   0% 50%; }
+}
+
+@media (max-width: 750px) {
 
     .error-subtitle {
         font-size: 2.2rem;
