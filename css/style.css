@@ -1150,14 +1150,6 @@ section {
     .nav_fijo {
         width: 85%;
     }
-
-    .inicio_imagen-alt-resol {
-        display: none;
-    }
-
-    .inicio_imagen {
-        display: inline !important;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -1166,6 +1158,12 @@ section {
     }
 
     .inicio_imagen {
+        width: 85%;
+        max-width: 65rem;
+        padding-top: 1.5rem;
+    }
+
+    .inicio_imagen-alt-resol {
         width: 85%;
         max-width: 65rem;
         padding-top: 1.5rem;
@@ -1222,12 +1220,18 @@ section {
         height: 7rem;
     }
 
+    .inicio_imagen-alt-resol {
+        display: none;
+    }
+
     .inicio_imagen {
+        display: inline !important;
         width: 80%;
         max-width: 50rem;
         padding-top: 1rem;
         margin: 1rem auto;
     }
+
 
     h1 {
         font-size: 1.4rem;
