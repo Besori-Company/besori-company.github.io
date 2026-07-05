@@ -103,7 +103,7 @@ document.getElementById("nav-placeholder").innerHTML = `
                 <div class="form_grupo">
                     <label class="checkbox_label">
                         <input type="checkbox" id="terminos" required>
-                        <span style="font-size:1.5rem;">Acepto los <a href="/pages/terms.html" style="color:#3577b1;text-decoration:none;">términos y condiciones</a></span>
+                        <span class="checkbox_texto">Acepto los <a href="/pages/terms.html" class="link_terminos">términos y condiciones</a></span>
                     </label>
                 </div>
                 <button type="submit" class="btn_submit">Crear cuenta</button>
@@ -678,6 +678,15 @@ document.getElementById('form-registro').addEventListener('submit', async (e) =>
 // ==================== GOOGLE ====================
 
 async function manejarGoogle() {
+    if (this.id === 'btn-google-registro') {
+        const terminos = document.getElementById('terminos');
+        if (!terminos.checked) {
+            terminos.reportValidity();
+            mostrarNotificacion('Debes aceptar los términos y condiciones', 'error');
+            return;
+        }
+    }
+
     this.disabled = true;
     const original = this.innerHTML;
     this.innerHTML = '<span style="opacity:.6">Conectando...</span>';
