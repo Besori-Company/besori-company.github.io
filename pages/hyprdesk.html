@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HyprDesk es un panel de configuración nativo para Hyprland. Controla brillo, modo noche, monitores, opacidad y perfil de usuario. Desarrollado en Rust con iced.">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="cvGdJkJWtKKVWp7WyuPua5V059hM9BCxacZXmlrNuiE">
+    <meta property="og:title" content="HyprDesk | Besori">
+    <meta property="og:description" content="Panel de configuración nativo para Hyprland. Controla brillo, modo noche, monitores, opacidad y perfil de usuario.">
+    <meta property="og:image" content="https://besoricompany.com/img/hyprdesk/Banner.png">
+    <meta property="og:url" content="https://besoricompany.com/pages/hyprdesk.html">
+    <meta property="og:type" content="website">
+    <title>Besori | HyprDesk</title>
+    <link rel="canonical" href="https://besoricompany.com/pages/hyprdesk.html" />
+    <link rel="icon" href="https://besoricompany.com/favicon.ico">
+    <link rel="preload" as="image" href="/img/header/Besori.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:ROND,wght@0..100,100..900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="preload" href="/css/normalize.css" as="style">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preload" href="/css/hyprdesk.css" as="style">
+    <link rel="stylesheet" href="/css/hyprdesk.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HyprDesk",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Linux",
+      "url": "https://besoricompany.com/pages/hyprdesk.html",
+      "softwareVersion": "1.0.3",
+      "license": "https://github.com/Besori-Company/HyprDesk/blob/main/LICENSE.md",
+      "description": "Panel de configuración nativo para Hyprland desarrollado en Rust con iced. Controla brillo, modo noche, monitores, opacidad de ventanas y perfil de usuario sin editar archivos de configuración.",
+      "image": "https://besoricompany.com/img/hyprdesk/Banner.png",
+      "downloadUrl": "https://github.com/Besori-Company/HyprDesk/releases/latest",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://besoricompany.com/#organization",
+        "name": "Besori",
+        "url": "https://besoricompany.com"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="cookies-placeholder"></div>
+    <header id="inicio" role="banner">
+        <svg class="deco deco-tl" viewBox="0 0 120 120" fill="none" stroke-linecap="round"><path d="M-5 60 Q25 50 40 20 Q50 0 70 -5" stroke="#1a1a1a" stroke-width="8" opacity=".07"/></svg>
+        <img class="inicio_imagen" src="/img/header/Besori.webp" alt="Besori logo">
+        <img class="inicio_imagen-alt-resol" src="/img/header/Besori-Alta-resol.webp" alt="Besori logo">
+        <h1>HyprDesk – Panel de ajustes para Hyprland</h1>
+        <svg class="deco deco-br" viewBox="0 0 120 120" fill="none" stroke-linecap="round"><path d="M125 60 Q95 70 80 100 Q70 120 50 125" stroke="#1a1a1a" stroke-width="8" opacity=".07"/></svg>
+    </header>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <section class="hyprdesk-funcionalidades">
+
+            <h2 class="titulo fade-in" style="animation-delay:0.05s">
+                <span class="titulo_ico naranja"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+                Instalación
+            </h2>
+
+            <div class="hd-hero fade-in" style="animation-delay:0.1s">
+                <div class="hd-hero__header">
+                    <img class="hd-hero__logo" src="/img/hyprdesk/hyprdesk.webp" alt="HyprDesk">
+                </div>
+                <div class="hd-hero__badges">
+                    <span class="estado-badge estado-badge--azul" id="hd-version">Disponible · v1.0.3</span>
+                    <span class="tech-badge">Rust</span>
+                    <span class="tech-badge">iced 0.14</span>
+                    <span class="tech-badge">Wayland</span>
+                    <span class="tech-badge">MIT + Commons Clause</span>
+                </div>
+                <p class="hd-hero__sub">HyprDesk es una herramienta de escritorio desarrollada en Rust con iced, diseñada específicamente para el compositor Hyprland en Wayland. Ofrece un panel centralizado donde puedes ajustar los principales parámetros de tu entorno sin necesidad de editar ningún archivo de configuración manualmente. Desde el brillo de pantalla hasta la gestión de monitores, todo a un clic de distancia.</p>
+                <div class="hd-install__terminal">
+                    <div class="hd-install__topbar">
+                        <div class="hd-install__dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <button class="hd-install__copy" aria-label="Copiar comando" title="Copiar">
+                            <svg class="hd-install__copy-ico" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span class="hd-install__copy-msg">Copiado</span>
+                        </button>
+                    </div>
+                    <pre class="hd-install__code"><code>curl -fsSL https://raw.githubusercontent.com/Besori-Company/HyprDesk/main/scripts/install.sh | bash</code></pre>
+                </div>
+                <div class="hd-hero__acciones">
+                    <a href="https://github.com/Besori-Company/HyprDesk" target="_blank" rel="noopener" class="hd-hero__btn">
+                        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3M16 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        Ver en GitHub
+                    </a>
+                    <div class="hd-descargas">
+                        <button type="button" class="hd-hero__btn hd-hero__btn--outline hd-descargas__toggle" aria-expanded="false" aria-haspopup="true" aria-controls="hd-descargas-menu">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Descargar
+                            <svg class="hd-descargas__chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="hd-descargas__menu" id="hd-descargas-menu" role="menu">
+                            <p class="hd-descargas__grupo">Binarios</p>
+                            <a class="hd-descargas__item" role="menuitem" href="https://github.com/Besori-Company/HyprDesk/releases/latest/download/hyprdesk-linux-x86_64" download>
+                                <span class="hd-descargas__ico"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+                                <span class="hd-descargas__txt">
+                                    <span class="hd-descargas__nombre">hyprdesk-linux-x86_64</span>
+                                    <span class="hd-descargas__archivo">Intel y AMD de 64 bits</span>
+                                </span>
+                                <span class="hd-descargas__peso">39 MB</span>
+                            </a>
+                            <a class="hd-descargas__item" role="menuitem" href="https://github.com/Besori-Company/HyprDesk/releases/latest/download/hyprdesk-linux-aarch64" download>
+                                <span class="hd-descargas__ico"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+                                <span class="hd-descargas__txt">
+                                    <span class="hd-descargas__nombre">hyprdesk-linux-aarch64</span>
+                                    <span class="hd-descargas__archivo">ARM de 64 bits</span>
+                                </span>
+                                <span class="hd-descargas__peso">37 MB</span>
+                            </a>
+                            <p class="hd-descargas__grupo">Paquetes</p>
+                            <a class="hd-descargas__item" role="menuitem" href="https://github.com/Besori-Company/HyprDesk/releases/latest/download/hyprdesk_amd64.deb" download>
+                                <span class="hd-descargas__ico"><svg viewBox="0 0 24 24"><path d="M20.5 15.5v-7a1.8 1.8 0 0 0-.9-1.56l-6.7-3.85a1.8 1.8 0 0 0-1.8 0L4.4 6.94A1.8 1.8 0 0 0 3.5 8.5v7a1.8 1.8 0 0 0 .9 1.56l6.7 3.85a1.8 1.8 0 0 0 1.8 0l6.7-3.85a1.8 1.8 0 0 0 .9-1.56z"/><path d="M3.8 7.4 12 12.1l8.2-4.7M12 21.2V12.1"/></svg></span>
+                                <span class="hd-descargas__txt">
+                                    <span class="hd-descargas__nombre">hyprdesk_amd64.deb</span>
+                                    <span class="hd-descargas__archivo">Debian, Ubuntu y derivadas</span>
+                                </span>
+                                <span class="hd-descargas__peso">13 MB</span>
+                            </a>
+                            <a class="hd-descargas__item" role="menuitem" href="https://github.com/Besori-Company/HyprDesk/releases/latest/download/hyprdesk_x86_64.rpm" download>
+                                <span class="hd-descargas__ico"><svg viewBox="0 0 24 24"><path d="M20.5 15.5v-7a1.8 1.8 0 0 0-.9-1.56l-6.7-3.85a1.8 1.8 0 0 0-1.8 0L4.4 6.94A1.8 1.8 0 0 0 3.5 8.5v7a1.8 1.8 0 0 0 .9 1.56l6.7 3.85a1.8 1.8 0 0 0 1.8 0l6.7-3.85a1.8 1.8 0 0 0 .9-1.56z"/><path d="M3.8 7.4 12 12.1l8.2-4.7M12 21.2V12.1"/></svg></span>
+                                <span class="hd-descargas__txt">
+                                    <span class="hd-descargas__nombre">hyprdesk_x86_64.rpm</span>
+                                    <span class="hd-descargas__archivo">Fedora, openSUSE y derivadas</span>
+                                </span>
+                                <span class="hd-descargas__peso">13 MB</span>
+                            </a>
+                            <a class="hd-descargas__todas" href="https://github.com/Besori-Company/HyprDesk/releases" target="_blank" rel="noopener">Todas las versiones en GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hd-requisitos fade-in" style="animation-delay:0.2s">
+                <h3 class="hd-requisitos__titulo">
+                    <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Requisitos
+                </h3>
+                <p class="hd-requisitos__sub">El instalador se encarga de descargar todo lo necesario automáticamente.</p>
+                <ul class="hd-requisitos__lista">
+                    <li>
+                        <code>brightnessctl</code>
+                        <span>Control de brillo por hardware</span>
+                    </li>
+                    <li>
+                        <span class="hd-requisitos__codes"><code>hyprsunset</code> / <code>wlsunset</code> / <code>gammastep</code> / <code>redshift</code></span>
+                        <span>Modo noche: Usa el que tengas instalado</span>
+                    </li>
+                    <li>
+                        <code>hyprctl</code>
+                        <span>Monitores y opacidad: Incluido con Hyprland</span>
+                    </li>
+                    <li>
+                        <code>polkit</code>
+                        <span>Escalado de privilegios para cambios de perfil</span>
+                    </li>
+                    <li>
+                        <code>glib2</code>
+                        <span>Comunicación con AccountsService para avatar y nombre de usuario</span>
+                    </li>
+                    <li>
+                        <code>accountsservice</code>
+                        <span>Daemon del sistema para la gestión de cuentas de usuario</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="hyprdesk-funcionalidades">
+
+            <h2 class="titulo fade-in" style="animation-delay:0.05s">
+                <span class="titulo_ico azul"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+                Funciones
+            </h2>
+
+            <div class="hd-features">
+
+                <div class="hd-feature fade-in" style="animation-delay:0.25s">
+                    <div class="hd-feature__media">
+                        <img src="/img/hyprdesk/Brillo.webp" alt="HyprDesk - Brillo" loading="lazy" decoding="async">
+                        <div class="hd-feature__media__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                    </div>
+                    <div class="hd-feature__content">
+                        <h3 class="hd-feature__titulo">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                            Brillo
+                        </h3>
+                        <p class="hd-feature__desc">Ajusta el brillo de tu pantalla de manera más fácil y sencilla.</p>
+                        <details class="hd-feature__details">
+                            <summary>Detalles técnicos</summary>
+                            <div class="hd-feature__details__body">Compatible con brightnessctl (ajuste por hardware) y ajuste gamma por software. Detecta automáticamente el método disponible en tu sistema.</div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="hd-feature hd-feature--reverse fade-in" style="animation-delay:0.3s">
+                    <div class="hd-feature__media">
+                        <img src="/img/hyprdesk/Temperatura.webp" alt="HyprDesk - Modo noche" loading="lazy" decoding="async">
+                        <div class="hd-feature__media__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                    </div>
+                    <div class="hd-feature__content">
+                        <h3 class="hd-feature__titulo">
+                            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                            Modo noche
+                        </h3>
+                        <p class="hd-feature__desc">Reduce la luz azul para cuidar tu vista en entornos con poca luz. Elige la calidez que más te convenga para cada momento del día.</p>
+                        <details class="hd-feature__details">
+                            <summary>Detalles técnicos</summary>
+                            <div class="hd-feature__details__body">Temperatura de color ajustable entre 1000 y 6500 K. Compatible con hyprsunset, wlsunset, gammastep y redshift; usa el que tengas instalado.</div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="hd-feature fade-in" style="animation-delay:0.35s">
+                    <div class="hd-feature__media">
+                        <img src="/img/hyprdesk/Monitores.webp" alt="HyprDesk - Monitores" loading="lazy" decoding="async">
+                        <div class="hd-feature__media__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                    </div>
+                    <div class="hd-feature__content">
+                        <h3 class="hd-feature__titulo">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            Monitores
+                        </h3>
+                        <p class="hd-feature__desc">Organiza tus pantallas arrastrándolas a la posición que necesites. Configura resolución, frecuencia, orientación, escala y pantalla principal desde un único lugar.</p>
+                        <details class="hd-feature__details">
+                            <summary>Detalles técnicos</summary>
+                            <div class="hd-feature__details__body">Los cambios se aplican con hyprctl keyword y se guardan en la configuración de Hyprland para que persistan entre reinicios.</div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="hd-feature hd-feature--reverse fade-in" style="animation-delay:0.4s">
+                    <div class="hd-feature__media">
+                        <img src="/img/hyprdesk/Opacidad.webp" alt="HyprDesk - Opacidad" loading="lazy" decoding="async">
+                        <div class="hd-feature__media__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                    </div>
+                    <div class="hd-feature__content">
+                        <h3 class="hd-feature__titulo">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+                            Opacidad
+                        </h3>
+                        <p class="hd-feature__desc">Controla la transparencia de tus ventanas de forma global o por aplicación.</p>
+                        <details class="hd-feature__details">
+                            <summary>Detalles técnicos</summary>
+                            <div class="hd-feature__details__body">Control independiente para ventanas activas e inactivas. Identificación de la aplicación por nombre de clase Wayland; seleccionable desde las ventanas abiertas o introduciendo el nombre manualmente.</div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="hd-feature fade-in" style="animation-delay:0.45s">
+                    <div class="hd-feature__media">
+                        <img src="/img/hyprdesk/Perfil.webp" alt="HyprDesk - Perfil" loading="lazy" decoding="async">
+                        <div class="hd-feature__media__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                    </div>
+                    <div class="hd-feature__content">
+                        <h3 class="hd-feature__titulo">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Perfil
+                        </h3>
+                        <p class="hd-feature__desc">Actualiza tu foto de perfil, cambia tu nombre de usuario y elige el idioma de la interfaz.</p>
+                        <details class="hd-feature__details">
+                            <summary>Detalles técnicos</summary>
+                            <div class="hd-feature__details__body">Permite cambiar también el locale del sistema además del idioma de la aplicación. Los cambios de nombre de usuario se aplican directamente en la configuración del sistema.</div>
+                        </details>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/includes/cookies.js"></script>
+    <script src="/includes/nav.js"></script>
+    <script src="/includes/footer.js"></script>
+    <script src="/js/footerYear.js"></script>
+
+    <script>
+        const lightbox = document.createElement('div');
+        lightbox.className = 'hd-lightbox';
+        lightbox.innerHTML = `
+            <button class="hd-lightbox__cerrar" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <img class="hd-lightbox__img" src="" alt="">
+        `;
+        document.body.appendChild(lightbox);
+
+        const lbImg = lightbox.querySelector('.hd-lightbox__img');
+
+        function abrirLightbox(src, alt) {
+            lbImg.src = src;
+            lbImg.alt = alt;
+            lightbox.style.display = 'flex';
+            requestAnimationFrame(() => lightbox.classList.add('hd-lightbox--visible'));
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarLightbox() {
+            lightbox.classList.remove('hd-lightbox--visible');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        document.querySelectorAll('.hd-feature__media img').forEach(img => {
+            img.addEventListener('click', () => abrirLightbox(img.src, img.alt));
+        });
+
+        lightbox.addEventListener('click', e => { if (e.target !== lbImg) cerrarLightbox(); });
+        lightbox.querySelector('.hd-lightbox__cerrar').addEventListener('click', cerrarLightbox);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarLightbox(); });
+
+        const descargas = document.querySelector('.hd-descargas');
+        const descargasToggle = descargas.querySelector('.hd-descargas__toggle');
+
+        function cerrarDescargas() {
+            descargas.classList.remove('is-open');
+            descargasToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        descargasToggle.addEventListener('click', e => {
+            e.stopPropagation();
+            const abierto = descargas.classList.toggle('is-open');
+            descargasToggle.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', e => {
+            if (!descargas.contains(e.target)) cerrarDescargas();
+        });
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarDescargas(); });
+
+        descargas.querySelectorAll('.hd-descargas__item').forEach(item => {
+            item.addEventListener('click', cerrarDescargas);
+        });
+
+        const copyBtn = document.querySelector('.hd-install__copy');
+        copyBtn.addEventListener('click', () => {
+            const text = document.querySelector('.hd-install__code code').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                copyBtn.classList.add('copied');
+                setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+            });
+        });
+    </script>
+</body>
+</html>
