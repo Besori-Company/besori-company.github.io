@@ -19,9 +19,13 @@
     <nav class="barra-nav" role="navigation" aria-label="Menú principal">
         <div class="nav_contenedor">
             <button class="nav_burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav_panel">
-                <span class="nav_burger_linea"></span>
-                <span class="nav_burger_linea"></span>
-                <span class="nav_burger_linea"></span>
+                <svg class="nav_burger_ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <circle cx="12" cy="3.6" r="2.1"/>
+                    <circle cx="20.4" cy="12" r="2.1"/>
+                    <circle cx="12" cy="20.4" r="2.1"/>
+                    <circle cx="3.6" cy="12" r="2.1"/>
+                    <circle cx="12" cy="12" r="2.1"/>
+                </svg>
             </button>
 
             <div class="nav_enlaces">${enlacesHTML()}</div>
