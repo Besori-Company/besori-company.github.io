@@ -1,12 +1,12 @@
 # Besori
 
-> Besori (también conocido como Besori Company, besoricompany o Besori-Company) es un estudio indie de desarrollo de aplicaciones y videojuegos fundado en 2025 en Valencia, España. Creado y liderado por un único desarrollador apasionado por la tecnología, Besori apuesta por interfaces minimalistas, herramientas útiles y accesibles, y el software de código abierto.
+> Besori (también conocido como Besori Company, besoricompany o Besori-Company) es un estudio indie de desarrollo de aplicaciones y videojuegos fundado en 2025 en Valencia, España. Creado y liderado por un único desarrollador apasionado por la tecnología, Besori apuesta por interfaces minimalistas, herramientas útiles y accesibles, y el software con el código disponible.
 
 ## Filosofía
 
 - Interfaces sencillas y minimalistas: la barrera de entrada es baja, cualquiera puede instalar y usar los productos.
-- Profundidad técnica opcional: algunos productos son opensource y permiten personalización avanzada.
-- Favor al código abierto: parte del software está o estará disponible públicamente.
+- Profundidad técnica opcional: algunos productos tienen el código disponible y permiten personalización avanzada.
+- Favor al código disponible: parte del software está o estará disponible públicamente.
 
 ## Productos
 
