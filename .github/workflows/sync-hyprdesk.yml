@@ -6,11 +6,6 @@ on:
     - cron: '17 * * * *'
   # Botón manual en la pestaña Actions
   workflow_dispatch:
-    inputs:
-      forzar_keepalive:
-        description: 'Forzar el commit vacío de actividad (para probarlo)'
-        type: boolean
-        default: false
   # Aviso inmediato desde el repo de HyprDesk al publicar una release
   repository_dispatch:
     types: [hyprdesk-release]
@@ -48,7 +43,7 @@ jobs:
       - name: Mantener activo el repo
         run: |
           dias=$(( ($(date +%s) - $(git log -1 --format=%ct)) / 86400 ))
-          if [ "$dias" -lt 50 ] && [ "${{ inputs.forzar_keepalive }}" != "true" ]; then
+          if [ "$dias" -lt 50 ]; then
             echo "Último commit hace $dias días, no hace falta."
             exit 0
           fi
