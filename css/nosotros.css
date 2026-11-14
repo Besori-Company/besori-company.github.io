@@ -26,9 +26,8 @@
 /* ==================== HERO ==================== */
 .nosotros-hero {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1.5rem;
     padding: 4rem 3rem calc(4rem + var(--solape));
     --c: #fcfcfd;
     opacity: 0;
@@ -36,19 +35,11 @@
 }
 
 .img-bessie {
+    flex-shrink: 0;
     width: 100%;
     max-width: 22rem;
     height: auto;
     object-fit: contain;
-}
-
-.nosotros-hero__texto {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--negro);
-    line-height: 1.4;
-    max-width: 50ch;
-    margin: 0;
 }
 
 /* ==================== PILA DE TARJETAS ==================== */
@@ -83,10 +74,10 @@
     padding-bottom: 2.6rem;
 }
 
-.nosotros-item--origen  { --c: linear-gradient(90deg, #ffd080 0%, #fff0d4 100%); } /* naranja HyprDesk */
-.nosotros-item--hacemos { --c: linear-gradient(90deg, #d4e4f5 0%, #e8f0fa 100%); } /* azul */
-.nosotros-item--mision  { --c: linear-gradient(90deg, #d4ede5 0%, #e8f5f0 100%); } /* verde Cloud */
-.nosotros-aviso         { --c: linear-gradient(90deg, #e2d9f0 0%, #f0ecf8 100%); } /* lila HyprDesk */
+.nosotros-item--origen  { --c: linear-gradient(90deg, #ffd080 0%, #fff0d4 100%); }
+.nosotros-item--hacemos { --c: linear-gradient(90deg, #d4e4f5 0%, #e8f0fa 100%); }
+.nosotros-item--mision  { --c: linear-gradient(90deg, #d4ede5 0%, #e8f5f0 100%); }
+.nosotros-aviso         { --c: linear-gradient(90deg, #e2d9f0 0%, #f0ecf8 100%); }
 
 .nosotros-pila > * {
     position: relative;
@@ -192,17 +183,12 @@
     .nosotros-pila > :nth-child(odd)::before  { rotate: -0.8deg; }
     .nosotros-pila > :nth-child(even)::before { rotate: 0.8deg; }
 
-
     .nosotros-hero {
         padding: 3rem 2rem calc(3rem + var(--solape));
     }
 
-    .nosotros-hero__texto {
-        font-size: 1.8rem;
-    }
-
     .img-bessie {
-        max-width: 18rem;
+        max-width: 19rem;
     }
 
     .nosotros-item,
@@ -233,12 +219,8 @@
         padding: 2.5rem 1.5rem calc(2.5rem + var(--solape));
     }
 
-    .nosotros-hero__texto {
-        font-size: 1.6rem;
-    }
-
     .img-bessie {
-        max-width: 15rem;
+        max-width: 17rem;
     }
 
     .nosotros-item,
@@ -266,7 +248,7 @@
 
 @media (max-width: 380px) {
     .img-bessie {
-        max-width: 13rem;
+        max-width: 15rem;
     }
 
     .nosotros-item,
